@@ -220,13 +220,21 @@
         }
 
         document.getElementById('submitFinalAnswer').onclick = function() {
-            const userFinalAnswer = finalAnswer.value.trim();
+            const userFinalAnswer = finalAnswer.value.trim().toLowerCase();  // Convert to lowercase
             const username = usernameInput.value.trim();
             let finalResult = "";
 
-            if (userFinalAnswer.toLowerCase() === "pratibha patil") {
+            // Check for all accepted variations of the final answer
+            const correctAnswer1 = "pratibha patil"; // Normalize the correct answer as lowercase
+            const correctAnswer2="Pratibha Patil";
+            const correctAnswer3="Pratibha patil";
+            if (userFinalAnswer === correctAnswer1) {
                 finalResult = "Your answer is correct. Thank you!";
-            } else {
+            }  if (userFinalAnswer === correctAnswer2) {
+                finalResult = "Your answer is correct. Thank you!";
+            }  if (userFinalAnswer === correctAnswer3) {
+                finalResult = "Your answer is correct. Thank you!";
+            }  else {
                 finalResult = "Your answer is incorrect. Thank you for participating!";
             }
 
@@ -237,7 +245,7 @@
             formData.append('username', username);
             formData.append('score', score);
             formData.append('time', totalTime);
-            formData.append('final_answer', userFinalAnswer);
+            formData.append('final_answer', finalAnswer.value.trim());
 
             // Send data to Google Apps Script
             fetch('https://script.google.com/macros/s/AKfycbwrHx0S_WrgBooxG7PLg5jHJXBnWboSz2jT2vFX_dfGgRS4OuE_xtj71qIIk4zsztOaZg/exec', {
@@ -249,9 +257,10 @@
                 } else {
                     console.error('Error sending data');
                 }
-            }).catch(error => {
-                console.error('Fetch error:', error);
             });
+
+            finalAnswerInput.style.display = "none";
+            resultDiv.style.display = "block";
         };
     </script>
 </body>
