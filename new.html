@@ -99,7 +99,7 @@
         <div id="timer"></div>
         <div id="quiz"></div>
         <div id="feedback"></div>
-        <img id="revealImage" src="https://github.com/mukthaparam/new/blob/main/neww.jpg" class="blurred" alt="Reveal Image">
+        <img id="revealImage" src="https://raw.githubusercontent.com/mukthaparam/new/main/neww.jpg" class="blurred" alt="Reveal Image">
         <div id="finalAnswerInput">
             <h2>Guess it!</h2>
             <input type="text" id="finalAnswer" placeholder="Enter your final answer" required>
@@ -135,11 +135,7 @@
         document.getElementById('startButton').onclick = function() {
             const username = usernameInput.value.trim();
             if (username) {
-                // Display welcome message dynamically instead of alert
-                const welcomeMessage = document.createElement('h2');
-                welcomeMessage.innerText = `Welcome, ${username}!`;
-                document.querySelector('.container').insertBefore(welcomeMessage, quizDiv);
-                
+                alert(`Welcome, ${username}!`);
                 nameInputDiv.style.display = 'none';
                 displayQuestion();
             } else {
