@@ -135,11 +135,6 @@
         document.getElementById('startButton').onclick = function() {
             const username = usernameInput.value.trim();
             if (username) {
-                // Display welcome message dynamically instead of alert
-                const welcomeMessage = document.createElement('h2');
-                welcomeMessage.innerText = `Welcome, ${username}!`;
-                document.querySelector('.container').insertBefore(welcomeMessage, quizDiv);
-                
                 nameInputDiv.style.display = 'none';
                 displayQuestion();
             } else {
