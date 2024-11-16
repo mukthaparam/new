@@ -37,12 +37,6 @@
             margin-bottom: 20px;
         }
 
-        #welcomeMessage {
-            font-size: 20px;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
         #timer {
             font-size: 20px;
             color: red;
@@ -102,11 +96,10 @@
             <input type="text" id="username" placeholder="Enter your name" required>
             <button id="startButton">Start Quiz</button>
         </div>
-        <div id="welcomeMessage"></div>
         <div id="timer"></div>
         <div id="quiz"></div>
         <div id="feedback"></div>
-        <img id="revealImage" src="https://raw.githubusercontent.com/mukthaparam/new/main/neww.jpg" class="blurred" alt="Reveal Image">
+        <img id="revealImage" src="https://github.com/mukthaparam/new/blob/main/neww.jpg" class="blurred" alt="Reveal Image">
         <div id="finalAnswerInput">
             <h2>Guess it!</h2>
             <input type="text" id="finalAnswer" placeholder="Enter your final answer" required>
@@ -135,7 +128,6 @@
         const finalAnswerInput = document.getElementById('finalAnswerInput');
         const finalAnswer = document.getElementById('finalAnswer');
         const resultDiv = document.getElementById('result');
-        const welcomeMessage = document.getElementById('welcomeMessage');
         let timer;
 
         nameInputDiv.style.display = 'block';
@@ -143,7 +135,11 @@
         document.getElementById('startButton').onclick = function() {
             const username = usernameInput.value.trim();
             if (username) {
-                welcomeMessage.innerText = `Welcome, ${username}! Get ready to start the quiz.`;
+                // Display welcome message dynamically instead of alert
+                const welcomeMessage = document.createElement('h2');
+                welcomeMessage.innerText = `Welcome, ${username}!`;
+                document.querySelector('.container').insertBefore(welcomeMessage, quizDiv);
+                
                 nameInputDiv.style.display = 'none';
                 displayQuestion();
             } else {
