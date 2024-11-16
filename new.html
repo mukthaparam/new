@@ -135,7 +135,6 @@
         document.getElementById('startButton').onclick = function() {
             const username = usernameInput.value.trim();
             if (username) {
-                alert(`Welcome, ${username}!`);
                 nameInputDiv.style.display = 'none';
                 displayQuestion();
             } else {
@@ -225,7 +224,7 @@
             const username = usernameInput.value.trim();
             let finalResult = "";
 
-            if (userFinalAnswer.toLowerCase() === "rv wic logo") {
+            if (userFinalAnswer.toLowerCase() === "Pratibha Patil") {
                 finalResult = "Your answer is correct. Thank you!";
             } else {
                 finalResult = "Your answer is incorrect. Thank you for participating!";
