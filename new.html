@@ -220,21 +220,18 @@
         }
 
         document.getElementById('submitFinalAnswer').onclick = function() {
-            const userFinalAnswer = finalAnswer.value.trim().toLowerCase();  // Convert to lowercase
+            const userFinalAnswer = finalAnswer.value.trim();  // Keep original case
             const username = usernameInput.value.trim();
             let finalResult = "";
 
             // Check for all accepted variations of the final answer
-            const correctAnswer1 = "pratibha patil"; // Normalize the correct answer as lowercase
-            const correctAnswer2="Pratibha Patil";
-            const correctAnswer3="Pratibha patil";
-            if (userFinalAnswer === correctAnswer1) {
+            if (userFinalAnswer === "Pratibha Patil") {
                 finalResult = "Your answer is correct. Thank you!";
-            }  if (userFinalAnswer === correctAnswer2) {
+            } else if (userFinalAnswer === "Pratibha patil") {
                 finalResult = "Your answer is correct. Thank you!";
-            }  if (userFinalAnswer === correctAnswer3) {
+            } else if (userFinalAnswer === "pratibha patil") {
                 finalResult = "Your answer is correct. Thank you!";
-            }  else {
+            } else {
                 finalResult = "Your answer is incorrect. Thank you for participating!";
             }
 
@@ -248,7 +245,7 @@
             formData.append('final_answer', finalAnswer.value.trim());
 
             // Send data to Google Apps Script
-            fetch('https://script.google.com/macros/s/AKfycbwrHx0S_WrgBooxG7PLg5jHJXBnWboSz2jT2vFX_dfGgRS4OuE_xtj71qIIk4zsztOaZg/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbwrHx0S_WrgBooxG7PLoT2VKsOjvkvAZzGEKmHj8wR4m3_Kq57d_ovbOALHoTjxqaZq/exec', {
                 method: 'POST',
                 body: formData
             }).then(response => {
